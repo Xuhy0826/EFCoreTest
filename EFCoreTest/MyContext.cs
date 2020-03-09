@@ -23,7 +23,11 @@ namespace EFCoreTest
             loggerFactory.AddProvider(new EFLoggerProvider());
             optionsBuilder.UseLoggerFactory(loggerFactory);
             optionsBuilder.UseOracle(
-                "data source=localhost:1521/oracle1;user id=C##kwitd;password=123456;Incr Pool Size=5;Decr Pool Size=2;", b => b.UseOracleSQLCompatibility("12"));
+                "Data Source=172.16.9.21/hisclone;User Id=hit_app;Password=hit;Pooling=True;Min Pool Size=50;Max Pool Size=250;Connection Lifetime=120;Connection Timeout=60;Incr Pool Size=5;Decr Pool Size=2;", b => b.UseOracleSQLCompatibility("12"));
+
+            //Data Source=172.16.9.21/hisclone;User Id=hit_app;Password=hit;Pooling=True;Min Pool Size=50;Max Pool Size=250;Connection Lifetime=120;Connection Timeout=60;Incr Pool Size=5;Decr Pool Size=2;
+
+            //data source=localhost:1521/oracle1;user id=C##kwitd;password=123456;Incr Pool Size=5;Decr Pool Size=2;
             base.OnConfiguring(optionsBuilder);
         }
 
