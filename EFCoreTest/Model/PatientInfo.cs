@@ -6,7 +6,7 @@ namespace EFCoreTest.Model
     public class PatientInfo
     {
         [Key]
-        public string PATIENT_ID { get; set; }
+        public string Patient_Id { get; set; }
         public string PATIENT_NAME { get; set; }
         public string PACT_CODE { get; set; }
         public string PACT_NAME { get; set; }

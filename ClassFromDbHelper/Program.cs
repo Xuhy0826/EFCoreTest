@@ -7,7 +7,7 @@ namespace ClassFromDbHelper
     {
         static void Main(string[] args)
         {
-            string fields = "patient_id, patient_name, pact_code, pact_name, spell_code, wb_code, birthday, sex_code, idenno, idcard_type, prof_code, work_name, work_tel, work_zip, home_address, telephone, home_zip, birth_area_code, dist, nation_code, coun_code, mari, email, linkman_name, linkman_tel, linkman_address, linkman_rela_code, account_flag, inhos_times, encrypt_flag, encrypt_desc, abo_blood, rh_blood, remark, oper_code, oper_date, create_date, local_flag, mobilephone, pact_no, english_name, mother_name, father_name, local_begin_date, extend_cards, vip_flag";
+            string fields = "id, patient_id, patient_status, vaccination_flag, vaccination_note, bloodtransfusion_flag, smoking_code, excessivedrinking_code, main_notes, createby, createtime, modifiedby, modifiedtime, description, delete_flag, backaries, backtaurus, backgemini";
             Console.WriteLine(MakeClass(fields));
             Console.ReadLine();
         }
