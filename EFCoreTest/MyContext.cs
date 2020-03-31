@@ -15,9 +15,9 @@ namespace EFCoreTest
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseOracle(
-                "DATA SOURCE=LOCALHOST:1521/ORACLE1;USER ID=C##kwitd ;PASSWORD=123456;"
+                "DATA SOURCE=LOCALHOST:1521/ORACLE1;USER ID=你的ID ;PASSWORD=你的密码;"
                 , b => b.UseOracleSQLCompatibility("12"));
-            //加入Sql打印的
+            //Sql打印到Console
             var loggerFactory = new LoggerFactory();
             loggerFactory.AddProvider(new EFLoggerProvider());
             optionsBuilder.UseLoggerFactory(loggerFactory);
