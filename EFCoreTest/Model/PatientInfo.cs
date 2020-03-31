@@ -49,7 +49,7 @@ namespace EFCoreTest.Model
         public string ENGLISH_NAME { get; set; }
         public string MOTHER_NAME { get; set; }
         public string FATHER_NAME { get; set; }
-        public DateTime LOCAL_BEGIN_DATE { get; set; }
+        public DateTime? LOCAL_BEGIN_DATE { get; set; }
         public string EXTEND_CARDS { get; set; }
         public string VIP_FLAG { get; set; }
     }
