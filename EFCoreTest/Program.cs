@@ -7,43 +7,38 @@ namespace EFCoreTest
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var options = new DbContextOptions<MyContext>();
 
             #region 查询
-            //using (var context = new MyContext(options))
-            //{
-            //    var res = context.Employee.ToListAsync();
-            //    //var res = context.Employee.OrderBy("EMPLOYEENO").Skip(0).Take(5).ToListAsync();//分页
-            //    if (res.Status == TaskStatus.Faulted)
-            //    {
-            //        Console.WriteLine(res.Exception.Message);
-            //    }
-            //    Console.ReadLine();
-            //}
+            await using var context = new MyContext(options);
+            var employeeCollection = await context.Employee.AsNoTracking().ToListAsync();
+            //var employeeCollection = await context.Employee.OrderBy(e => e.EmployeeNo).AsNoTracking().Skip(0).Take(5).ToListAsync();//分页
+            foreach (var employee in employeeCollection)
+            {
+                Console.WriteLine($"{employee.Name} | {employee.EmployeeNo} | {employee.Department}");
+            }
+
+            Console.ReadLine();
+
             #endregion
 
             #region 新增
-            var employee = new Employee()
-            {
-                EmployeeNo = 6,
-                Name = "老周",
-                Department = "d6",
-                BirthDay = DateTime.Now.AddYears(-40),
-                IsValid = true
-            };
-            using (var context = new MyContext(options))
-            {
-                var res = context.Employee.AddAsync(employee);
-                if (res.Status == TaskStatus.Faulted)
-                {
-                    Console.WriteLine(res.Exception.Message);
-                }
-                context.SaveChanges();
-                Console.WriteLine("添加成功");
-                Console.ReadLine();
-            }
+            //var employee = new Employee()
+            //{
+            //    EmployeeNo = 6,
+            //    Name = "老周",
+            //    Department = "d6",
+            //    BirthDay = DateTime.Now.AddYears(-40),
+            //    IsValid = true
+            //};
+            //await using var context = new MyContext(options);
+            //var res = await context.Employee.AddAsync(employee);
+            //await context.SaveChangesAsync();
+            //Console.WriteLine("添加成功");
+            //Console.ReadLine();
+
             #endregion
 
         }

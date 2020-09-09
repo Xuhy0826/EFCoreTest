@@ -36,7 +36,8 @@ namespace EFCoreTest
             {
                 entity.ToTable("EMPLOYEE");
                 entity.Property(e => e.Id).IsRequired();
-                entity.Property(e => e.Id).ForOracleUseSequenceHiLo("SEQ_EMPLOYEE_ID");
+                //指定需要关联的序列名称
+                entity.Property(e => e.Id).UseHiLo("SEQ_EMPLOYEE_ID");
                 //列映射
                 entity.Property(e => e.Id).HasColumnName("ID");
                 entity.Property(e => e.BirthDay).HasColumnName("BIRTHDAY");
@@ -54,6 +55,7 @@ namespace EFCoreTest
         public ILogger CreateLogger(string categoryName) => new EFLogger(categoryName);
         public void Dispose() { }
     }
+
     public class EFLogger : ILogger
     {
         private readonly string categoryName;
